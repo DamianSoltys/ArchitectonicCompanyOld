@@ -1,0 +1,49 @@
+.gallery {
+  width: 80%;
+  height: 85%;
+  min-height: 200px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.gallery:hover {
+  opacity: .8;
+}
+
+.image {
+  padding-bottom: 50px;
+}
+
+.section {
+  margin-top: 80px;
+}
+
+.section a {
+  border: 0;
+}
+
+.header_gallery {
+  color: #00008B;
+  font-size: 1.4em;
+}
+
+@media only screen and (min-width:768px) {
+  .header_gallery {
+    font-size: 2em;
+  }
+  .gallery {
+    min-height: 250px;
+  }
+}
+
+@media only screen and (min-width:998px) {
+  .gallery {
+    min-height: 300px;
+  }
+}
+  @media only screen and (min-width:1200px) {
+    .gallery {
+      min-height: 200px;
+    }
+  }

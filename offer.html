@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+  <title>Poznaj naszą firmę</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/ikonki.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/main_css.css">
+  <link rel="stylesheet" type="text/css" href="css/work_css.css">
+  <link rel="stylesheet" type="text/css" href="css/form_css.css">
+
+  <script src="js/validate.js"></script>
+</head>
+
+<body>
+  <div class="col-12 text-right header_navigation">
+    <div class="dropdown">
+      <a href="main.html#Work" class="link_header">
+        <p class="foot_text text_drop">Co robimy <span class="hide_md">&dArr;</span></p>
+      </a>
+      <div class="drop-content">
+        <a href="main.html#Us" class="link_header">
+          <p class="foot_text">Kim jesteśmy</p>
+        </a>
+        <a href="main.html#Projects" class="link_header">
+          <p class="foot_text">Nasze projektry</p>
+        </a>
+        <a href="main.html#Offer" class="link_header">
+          <p class="foot_text">Oferta</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 col-md-6 col-lg-4 text-center">
+      <a href="main.html" class="main_link"><img class="image" src="images/logo1.png"  alt="logo"></a>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row section">
+      <div class="col-12 text-center">
+        <p class="header_title">Wszystkie informacje i cennik zostanie przeslany na podany adres email po wypelnieniu formularza</p>
+      </div>
+    </div>
+    <div class="row section">
+      <div class="col-12 text-center">
+        <form action="mailto:kastiell222@gmail.com" onsubmit="return Sprawdz(this);" novalidate method="post" onreset="location.reload()">
+          <div class="form-group">
+            <label for="FormName">Imię</label>
+            <input type="text" id="FormName" placeholder="Imię" class="form-control" name="form_name" required/>
+            <p id="name_error" class="error"></p>
+          </div>
+          <div class="form-group">
+            <label for="FormSurname">Nazwisko:</label>
+            <input type="text" id="FormSurname" placeholder="Nazwisko" name="form_surname" class="form-control" required/>
+            <p id="surname_error" class="error"></p>
+          </div>
+          <div class="form-group">
+            <label for="FormAge">Wiek:</label>
+            <input type="text" id="FormAge" placeholder="Wiek" name="form_age" class="form-control" />
+            <p id="age_error" class="error"></p>
+          </div>
+          <div class="form-group">
+            <label for="FormEmail">Adres Email:</label>
+            <input type="email" id="FormEmail" placeholder="Email" name="form_email" class="form-control" required/>
+            <p id="email_error" class="error"></p>
+          </div>
+          <div class="form-group">
+            <label for="FormUrl">Twoja strona:</label>
+            <input type="url" id="FormUrl" placeholder="http://" name="form_url" class="form-control" />
+            <p id="url_error" class="error"></p>
+          </div>
+          <p><strong>Wybierz tematykę</strong></p>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" required name="Radios" id="Radio1" value="Budownictwo">
+            <label class="form-check-label" for="Radio1">
+            Budownictwo
+          </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" required name="Radios" id="Radio2" value="Wnętrze">
+            <label class="form-check-label" for="Radio2">
+          Wnętrze
+        </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" required name="Radios" id="Radio3" value="Ogród">
+            <label class="form-check-label" for="Radio3">
+           Ogród
+      </label>
+          </div>
+          <p id="radio_error" class="error"></p>
+          <p><strong>Wybierz plan</strong></p>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" required name="Radios1" id="Radio4" value="Standard">
+            <label class="form-check-label" for="Radio4">
+              Standard Edition[100$]
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" required name="Radios1" id="Radio5" value="Enterprise">
+            <label class="form-check-label" for="Radio5">
+            Enterprise Edition[300$]
+            </label>
+          </div>
+          <p id="radio1_error" class="error"></p>
+          <div class="form-group">
+            <label for="inputCity">Miasto</label>
+            <select id="inputCity" class="form-control" name="selector">
+        <option selected value="">Wybierz...</option>
+        <option value="Lublin">Lublin</option>
+        <option value="Warszawa">Warszawa</option>
+        <option value="Katowice">Katowice</option>
+        <option value="Gdańsk">Gdańsk</option>
+        <option value="Poznań">Poznań</option>
+        <option value="Kraków">Kraków</option>
+        <option value="Krasnystaw">Krasnystaw</option>
+      </select>
+            <p id="select_error" class="error"></p>
+          </div>
+          <p><strong>Zgoda</strong></p>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="Check1" name="terms">
+            <label class="form-check-label" for="Check1">Zgoda na przetwarzanie danych osobowych</label>
+          </div>
+          <p id="check-error" class="error"></p>
+          <input type="submit" class="btn btn-info" value="Wyślij" id="submit-btn">
+          <input type="reset" class="btn btn-info" value="Anuluj" id="reset-btn">
+        </form>
+        <button class="btn btn-info" id="btnsave" onclick="saveDane();">Zapisz dane</button>
+        <button class="btn btn-info" id="btnclear" onclick="clearDane();">Usuń dane</button>
+        <button class="btn btn-info" id="btnshow" onclick="showDane();">Pokaż dane</button>
+        <button class="btn btn-info" id="btndane" onclick="wstawDane();">Wstaw dane</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="col-12 text-center">
+      <img class="img_p" src="images/logo1.png" height="50" alt="imglogo">
+      <a href="main.html" class="link">
+        <p class="foot_text">Strona glówna</p>
+      </a>
+      <p class="footer_p">Copyright 2018</p>
+    </div>
+  </div>
+</body>
+
+</html>

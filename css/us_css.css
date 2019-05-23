@@ -1,0 +1,51 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.our_images {
+  width: 60%;
+  min-height: 200px;
+  margin-top: 50px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  margin-bottom: 60px;
+}
+
+.text_work {
+  margin-top: 60px;
+}
+
+.section {
+  margin-top: 50px;
+}
+
+@media screen and (min-width:450px) {
+  .our_images {
+    min-height: 220px;
+  }
+}
+
+@media screen and (min-width:550px) {
+  .our_images {
+    min-height: 360px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .our_images {
+    min-height: 450px;
+  }
+  .text_work {
+    font-size: 2em;
+  }
+}
+
+@media screen and (min-width:860px) {
+  .our_images {
+    min-height: 550px;
+    width: 50%;
+  }
+  .header_work {
+    font-size: 2.5em;
+  }
+}
