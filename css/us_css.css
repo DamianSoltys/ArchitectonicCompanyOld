@@ -42,7 +42,6 @@ body {
 
 @media screen and (min-width:860px) {
   .our_images {
-    min-height: 550px;
     width: 50%;
   }
   .header_work {
