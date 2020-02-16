@@ -126,7 +126,7 @@ function dataAlert() {
   alert("!!TWOJE DANE!!\n" + JSON.stringify(localStorage, null, 4));
 }
 
-function dataClear() {
+function clearData() {
   localStorage.clear();
   alert('Dane zostaly usunięte!!');
 }
