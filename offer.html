@@ -47,7 +47,7 @@
     </div>
     <div class="row section">
       <div class="col-12 text-center">
-        <form action="mailto:kastiell222@gmail.com" onsubmit="return Sprawdz(this);" novalidate method="post" onreset="location.reload()">
+        <form action="mailto:kastiell222@gmail.com" onsubmit="return checkHtmlForm(this);" novalidate method="post" onreset="location.reload()">
           <div class="form-group">
             <label for="FormName">Imię</label>
             <input type="text" id="FormName" placeholder="Imię" class="form-control" name="form_name" required/>
@@ -130,10 +130,10 @@
           <input type="submit" class="btn btn-info" value="Wyślij" id="submit-btn">
           <input type="reset" class="btn btn-info" value="Anuluj" id="reset-btn">
         </form>
-        <button class="btn btn-info" id="btnsave" onclick="saveDane();">Zapisz dane</button>
-        <button class="btn btn-info" id="btnclear" onclick="clearDane();">Usuń dane</button>
-        <button class="btn btn-info" id="btnshow" onclick="showDane();">Pokaż dane</button>
-        <button class="btn btn-info" id="btndane" onclick="wstawDane();">Wstaw dane</button>
+        <button class="btn btn-info" id="btnsave" onclick="saveData();">Zapisz dane</button>
+        <button class="btn btn-info" id="btnclear" onclick="clearData();">Usuń dane</button>
+        <button class="btn btn-info" id="btnshow" onclick="showData();">Pokaż dane</button>
+        <button class="btn btn-info" id="btndane" onclick="pushData();">Wstaw dane</button>
       </div>
     </div>
   </div>

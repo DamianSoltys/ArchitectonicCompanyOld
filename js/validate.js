@@ -1,29 +1,32 @@
 var store = new Object();
 store.radio = new Array();
-function sprawdzPole(pole_id, obiektRegex) {
 
-  var obiektPole = document.getElementById(pole_id);
-  if (!obiektRegex.test(obiektPole.value)) 
+function checkField(idField, regexObject) {
+
+  var fieldObject = document.getElementById(idField);
+  if (!regexObject.test(fieldObject.value))
     return (false);
-  else 
+  else
     return (true)
 }
-function sprawdz_radio(nazwa_radio, radio_nr) {
 
-  var obiekt = document.getElementsByName(nazwa_radio);
-  for (i = 0; i < obiekt.length; i++) {
-    wybrany = obiekt[i].checked;
-    if (obiekt[i].checked) {
-      store.radio[radio_nr] = obiekt[i].value;
+function checkRadio(nazwa_radio, radio_nr) {
+
+  var radioObject = document.getElementsByName(nazwa_radio);
+  for (i = 0; i < radioObject.length; i++) {
+    isTaken = radioObject[i].checked;
+    if (radioObject[i].checked) {
+      store.radio[radio_nr] = radioObject[i].value;
       localStorage.setItem('radio' + radio_nr, store.radio[radio_nr]);
     }
-    if (wybrany) {
+    if (isTaken) {
       return true;
     }
   }
   return false;
 }
-function Checkform(form) {
+
+function checkForm(form) {
   if (!form.terms.checked) {
     alert("Proszę o zaznaczenie zgody na przetwarzanie informacji!")
     form.terms.focus();
@@ -31,42 +34,47 @@ function Checkform(form) {
   }
   return true;
 }
-function sprawdz_select(select_id) {
+
+function checkSelect(select_id) {
   select = document.getElementById(select_id);
   if (select.options[select.selectedIndex].value == '' || select.options[select.selectedIndex].value == '-1') {
     return false;
-  } else 
+  } else
     store.select = select.options[select.selectedIndex].value;
   localStorage.setItem('select', store.select);
   return true;
 }
-function sprawdz() {
-  var ok = true;
-  obiektNazw = /^[a-zA-Z]{2,20}$/;
-  obiektemail = /^([a-zA-Z0-9])+([.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-]+)+/;
-  obiektWiek = /^[1-9][0-9]?$/;
-  obiektUrl = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+
+function check() {
+  var isValidate = true;
+  nameObject = /^[a-zA-Z]{2,20}$/;
+  emailObject = /^([a-zA-Z0-9])+([.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-]+)+/;
+  ageObject = /^[1-9][0-9]?$/;
+  urlObject = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+
   //Imię
-  if (!sprawdzPole("FormName", obiektNazw)) {
-    ok = false;
+  if (!checkField("FormName", nameObject)) {
+    isValidate = false;
     document.getElementById("name_error").innerHTML = "Wpisz poprawnie imię!";
   } else {
     store.name = document.querySelector('#FormName').value;
     localStorage.setItem('name', store.name);
     document.getElementById("name_error").innerHTML = "";
   }
+
   //Nazwisko
-  if (!sprawdzPole("FormSurname", obiektNazw)) {
-    ok = false;
+  if (!checkField("FormSurname", nameObject)) {
+    isValidate = false;
     document.getElementById("surname_error").innerHTML = "Wpisz poprawnie Nazwisko!";
   } else {
     store.surname = document.querySelector('#FormSurname').value;
     localStorage.setItem('surname', store.surname);
     document.getElementById("surname_error").innerHTML = "";
   }
+
   //Email
-  if (!sprawdzPole("FormEmail", obiektemail)) {
-    ok = false;
+  if (!checkField("FormEmail", emailObject)) {
+    isValidate = false;
     document.getElementById("email_error").innerHTML = "Wpisz poprawnie Email!";
   } else {
     store.email = document.querySelector('#FormEmail').value;
@@ -75,50 +83,55 @@ function sprawdz() {
   }
 
   //URL
-  if (!sprawdzPole("FormUrl", obiektUrl)) {
-    ok = false;
+  if (!checkField("FormUrl", urlObject)) {
+    isValidate = false;
     document.getElementById("url_error").innerHTML = "Wpisz poprawnie Url!";
   } else {
     store.url = document.querySelector('#FormUrl').value;
     localStorage.setItem('url', store.url);
     document.getElementById("url_error").innerHTML = "";
   }
+
   //Wiek
-  if (!sprawdzPole("FormAge", obiektWiek)) {
-    ok = false;
+  if (!checkField("FormAge", ageObject)) {
+    isValidate = false;
     document.getElementById("age_error").innerHTML = "Wpisz poprawnie swój Wiek!";
   } else {
     store.age = document.querySelector('#FormAge').value;
     localStorage.setItem('age', store.age);
     document.getElementById("age_error").innerHTML = "";
   }
-  //Raadio
-  if (!sprawdz_radio('Radios', 0)) {
-    ok = false;
+
+  //Radio
+  if (!checkRadio('Radios', 0)) {
+    isValidate = false;
     document.getElementById("radio_error").innerHTML = "Proszę o zaznaczenie!";
-  } else 
+  } else
     document.getElementById("radio_error").innerHTML = "";
-  if (!sprawdz_radio('Radios1', 1)) {
-    ok = false;
+  if (!checkRadio('Radios1', 1)) {
+    isValidate = false;
     document.getElementById("radio1_error").innerHTML = "Proszę o zaznaczenie!";
-  } else 
+  } else
     document.getElementById("radio1_error").innerHTML = "";
-  if (!sprawdz_select('inputCity')) {
-    ok = false;
+  if (!checkSelect('inputCity')) {
+    isValidate = false;
     document.getElementById("select_error").innerHTML = "Proszę o wybranie miasta!";
-  } else 
+  } else
     document.getElementById("select_error").innerHTML = "";
-  return ok;
+
+  return isValidate;
 }
-function alertDane() {
+
+function dataAlert() {
   alert("!!TWOJE DANE!!\n" + JSON.stringify(localStorage, null, 4));
 }
-function clearDane() {
+
+function dataClear() {
   localStorage.clear();
   alert('Dane zostaly usunięte!!');
-
 }
-function saveDane() {
+
+function saveData() {
   localStorage.setItem('name', document.querySelector('#FormName').value);
   localStorage.setItem('surname', document.querySelector('#FormSurname').value);
   localStorage.setItem('email', document.querySelector('#FormEmail').value);
@@ -136,12 +149,13 @@ function saveDane() {
       localStorage.setItem('radio1', radio[i].value);
     }
   }
-  localStorage.setItem('zgoda', document.querySelector('#Check1').checked);
+  localStorage.setItem('agreement', document.querySelector('#Check1').checked);
   select = document.querySelector('#inputCity');
   localStorage.setItem('select', select.options[select.selectedIndex].value);
   alert('Dane zostaly zapisane!!');
 }
-function wstawDane() {
+
+function pushData() {
   document.querySelector('#FormName').value = localStorage.getItem('name');
   document.querySelector('#FormSurname').value = localStorage.getItem('surname');
   document.querySelector('#FormEmail').value = localStorage.getItem('email');
@@ -159,27 +173,28 @@ function wstawDane() {
       radio[i].checked = true;
     }
   }
-  if (localStorage.getItem('zgoda') == 'false' || localStorage.getItem('zgoda') == null) {
+  if (localStorage.getItem('agreement') == 'false' || localStorage.getItem('agreement') == null) {
     document.querySelector('#Check1').checked = false;
-  } else 
+  } else
     document.querySelector('#Check1').checked = true;
   select = document.querySelector('#inputCity');
-  if (localStorage.getItem('select') == null) 
+  if (localStorage.getItem('select') == null)
     select.value = ''
-  else 
+  else
     select.value = localStorage.getItem('select');
   alert('Dane zostaly wstawione!!');
 }
 
-function showDane() {
-  alertDane();
+function showData() {
+  dataAlert();
 }
-function Sprawdz(form) {
-  if (Checkform(form) && sprawdz()) {
-    store.zgoda = form.terms.checked;
-    localStorage.setItem('zgoda', store.zgoda);
 
-    alertDane();
+function checkHtmlForm(form) {
+  if (checkForm(form) && check()) {
+    store.agreement = form.terms.checked;
+    localStorage.setItem('agreement', store.agreement);
+
+    dataAlert();
     return true;
   } else {
     return false;
